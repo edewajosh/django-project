@@ -121,7 +121,27 @@ venv.bak/
 
 # mkdocs documentation
 /site
+# mypy
+.mypy_cache/
+__pycache__/
+.pip-selfcheck.json
+.pyvenv.cfg
+# Other unwanted stuff
+.idea
+.DS_Store
+.DS_STORE
 
+# Database stuff
+*.sqlite3
+migrations/
+db.sqlite3
+jkuatit.sql
+
+media_cdn/
+static_cdn/
+products/
+lib64/python3.6/site-packages
+bin/
 # mypy
 .mypy_cache/
 .vscode/
