@@ -140,7 +140,7 @@ CART_SESSION_ID = 'cart'
 
 DEBUG = True
 if DEBUG:
-    INTERNAL_IPS = ('127.0.0.1', 'localhost',)
+    INTERNAL_IPS = ('127.0.0.1', 'localhost', '192.168.43.78')
     MIDDLEWARE += (
         'debug_toolbar.middleware.DebugToolbarMiddleware',
     )

@@ -7,7 +7,12 @@
 {% block content %}
    <div class="container-fluid">
       <div class="row" style="margin-top: 6%">
-
+        {% for drug in drugs %}
+          <h4>{{ drug.name}}</h4>
+        {% endfor %}
+        {% for list in lists %}
+          <h4>{{ list.name}}</h4>
+        {% endfor %}
         <div class="col-sm-8 blog-main">
 
           <div class="blog-post">

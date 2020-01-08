@@ -9,18 +9,17 @@ def product_list(request, category_slug=None):
     #cursor = connection.cursor()
     #cursor.execute('''SELECT * FROM Product''')
     #drugs = cursor.fetchall()
-    drugs = Product.objects.raw('SELECT * FROM Product')
+    #drugs = Product.objects.raw('SELECT * FROM shop_product')
+    #lists = Product.objects.all()
 
     category = None
     categories = Category.objects.all()
-    cursor = connection.cursor()
     products = Product.objects.filter(available=True)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=category)
 
     context = {
-        'drugs' : drugs,
         'category': category,
         'categories': categories,
         'products': products
@@ -29,11 +28,8 @@ def product_list(request, category_slug=None):
 
 def product_list_two(request, category_slug=None):
 
-    drugs = Category.objects.raw('SELECT * FROM shop_product')
 
     category = None
-    categories = Category.objects.all()
-    #cursor = connection.cursor()
     products = Product.objects.filter(available=True)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
@@ -47,10 +43,6 @@ def product_list_two(request, category_slug=None):
     return render(request, 'shop/product/list_two.html', context)
 
 def test_comparison(request):
-    cursor = connection.cursor()
-    cursor.execute('''SELECT * FROM shop_product''')
-    drugs = cursor.fetchall()
-    somethings = Category.objects.raw('SELECT * FROM shop_product')
     products = Product.objects.all()
     context = {
         'drugs' : drugs,
@@ -68,3 +60,10 @@ def product_detail(request, id, slug):
         'cart_product_form': cart_product_form
     }
     return render(request, 'shop/product/detail.html', context)
+def cheap_products(request, price):
+    products = Product.objects.filter(price__lte=price)
+
+    context = {
+        'products' : products,
+    }
+    return render(request, 'shop/product/cheap.html', context)

@@ -33,6 +33,11 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 
     class Meta:
+        """
+        indexes = [
+            models.Index(fields=['price'])
+        ]
+        """
         ordering = ('name', )
         index_together = (('id', 'slug'),)
 
