@@ -17,6 +17,6 @@ jkuatit.sql
 media_cdn/
 static_cdn/
 products/
-lib64/
+lib64/python3.6/site-packages
 bin/
 
